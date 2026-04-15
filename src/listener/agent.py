@@ -31,6 +31,7 @@ from volttron.utils.commands import vip_main
 from volttron.client.messaging.health import STATUS_GOOD
 from volttron.client.vip.agent import Agent, Core, PubSub
 import volttron.utils as utils
+from volttron.client.logs import setup_logging
 
 _log = logging.getLogger(__name__)
 #_log.setLevel(logging.DEBUG)
@@ -102,6 +103,7 @@ def main():
     :return:
     """
     try:
+        setup_logging()
         vip_main(ListenerAgent, version=__version__)
     except Exception as e:
         _log.exception('unhandled exception')
